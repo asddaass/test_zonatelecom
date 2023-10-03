@@ -1,0 +1,116 @@
+test_authorization.py::TestAuthorization::test_successful_enter_by_email
+
+self = <test_authorization.TestAuthorization object at 0x000001D57214B9D0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="3b72e2cd4ce35d9b2b3b38905b61ca77")>
+get_user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+
+    def test_successful_enter_by_email(self, driver, get_user):
+        driver.get(auth_link)
+        AuthPage(driver).enter_by_email(get_user['email'])
+>       AuthPage(driver).check_correct_email()
+
+test_authorization.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <authorization_page.AuthPage object at 0x000001D5721A1190>
+
+    def check_correct_email(self):
+>       assert self.find(AuthL.password_field, True), 'Не корректный эмейл, поле для пароля не появилось'
+E       AssertionError: Не корректный эмейл, поле для пароля не появилось
+
+authorization_page.py:50: AssertionError
+============================================================
+test_authorization.py::TestAuthorization::test_enter_by_email_with_wrong_password
+
+self = <test_authorization.TestAuthorization object at 0x000001D57214B9A0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="2d3da1c06244d418b15678d8bf4af8e2")>
+get_user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+
+    def test_enter_by_email_with_wrong_password(self, driver, get_user):
+        driver.get(auth_link)
+        AuthPage(driver).enter_by_email(get_user['email'])
+>       AuthPage(driver).check_correct_email()
+
+test_authorization.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <authorization_page.AuthPage object at 0x000001D5729C6700>
+
+    def check_correct_email(self):
+>       assert self.find(AuthL.password_field, True), 'Не корректный эмейл, поле для пароля не появилось'
+E       AssertionError: Не корректный эмейл, поле для пароля не появилось
+
+authorization_page.py:50: AssertionError
+============================================================
+test_authorization.py::TestAuthorization::test_successful_enter_by_phone
+
+self = <test_authorization.TestAuthorization object at 0x000001D57214BAC0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="fc316ef0a1eea4c65f09b5b3d3919e6c")>
+get_user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+
+    def test_successful_enter_by_phone(self, driver, get_user):
+        driver.get(auth_link)
+        AuthPage(driver).enter_by_phone(get_user['phone'])
+>       AuthPage(driver).check_correct_phone()
+
+test_authorization.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <authorization_page.AuthPage object at 0x000001D5721A1220>
+
+    def check_correct_phone(self):
+>       assert self.find(AuthL.sms_code_field, True), 'Не корректный номер, поле для смс не появилось'
+E       AssertionError: Не корректный номер, поле для смс не появилось
+
+authorization_page.py:53: AssertionError
+============================================================
+test_authorization.py::TestAuthorization::test_enter_by_phone_with_wrong_sms_code
+
+self = <test_authorization.TestAuthorization object at 0x000001D57214B8B0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="603c7a4e7a5239f3148ee1dd58c94c93")>
+get_user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+
+    def test_enter_by_phone_with_wrong_sms_code(self, driver, get_user):
+        driver.get(auth_link)
+        AuthPage(driver).enter_by_phone(get_user['phone'])
+>       AuthPage(driver).check_correct_phone()
+
+test_authorization.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <authorization_page.AuthPage object at 0x000001D572A26B50>
+
+    def check_correct_phone(self):
+>       assert self.find(AuthL.sms_code_field, True), 'Не корректный номер, поле для смс не появилось'
+E       AssertionError: Не корректный номер, поле для смс не появилось
+
+authorization_page.py:53: AssertionError
+============================================================
+test_authorization.py::TestAuthorization::test_successful_enter_by_social_site_google
+
+self = <test_authorization.TestAuthorization object at 0x000001D57214BFA0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="dcb7f1fd21e0020f60b98a960e6b84cc")>
+get_user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+
+    def test_successful_enter_by_social_site_google(self, driver, get_user):
+        driver.get(auth_link)
+>       AuthPage(driver).enter_by_social_site(get_user, 'google')
+
+test_authorization.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <authorization_page.AuthPage object at 0x000001D572A662B0>
+user = {'email': 'Shanna@melissa.tv', 'password': 'anastasia.net', 'phone': '010-692-6593 x09125'}
+soc_type = 'google'
+
+    def enter_by_social_site(self, user, soc_type):
+        if soc_type == 'google':
+            self.find(AuthL.social_google_button).click()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            self.find(AuthL.social_google_login_field).send_keys(user['email'])
+            self.find(AuthL.social_google_next_button).click()
+>           assert self.find(AuthL.social_google_password_field, True), 'Не корректный эмейл, поле для пароля не появилось'
+E           AssertionError: Не корректный эмейл, поле для пароля не появилось
+
+authorization_page.py:43: AssertionError
+============================================================
